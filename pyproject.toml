@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ffmpeg-mcp-server"
+version = "0.1.0"
+description = "Production-grade Model Context Protocol (MCP) server for deterministic FFmpeg video/audio processing, timeline trimming, dynamic subtitling, and media probing."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Guillermo López Véliz", email = "guillermolopezveliz24@gmail.com" },
+]
+keywords = ["mcp", "model-context-protocol", "ffmpeg", "video-editing", "ai-agents", "claude-code", "subtitles"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video :: Conversion",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.optional-dependencies]
+mcp = [
+    "mcp>=1.2.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.6.0",
+]
+
+[project.scripts]
+ffmpeg-mcp-server = "ffmpeg_mcp_server.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/alanveloper-epam/ffmpeg-mcp-server"
+Repository = "https://github.com/alanveloper-epam/ffmpeg-mcp-server"
+Issues = "https://github.com/alanveloper-epam/ffmpeg-mcp-server/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ffmpeg_mcp_server"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
